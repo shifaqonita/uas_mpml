@@ -30,12 +30,10 @@ resto_pred = ''
 if st.button('Test Prediksi Profitability'):
     resto_prediction = resto_model.predict([[RestaurantID, MenuCategory, MenuItem, Price]])
 
-    if(resto_pred == 'Low'):
-        return 0
-    elif(resto_pred == 'Medium'):
-        return 1
-    elif(resto_pred == 'High'):
-        return 2
+    if(resto_prediction[0] == 0):
+        resto_pred = 'Low' 
+    elif(resto_prediction[0] == 1):
+        resto_pred = 'Medium'
     else:
-        return None
+        resto_pred = 'High'
 st.success(resto_pred)
